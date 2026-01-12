@@ -19,6 +19,45 @@ import {
   CheckCircle2
 } from 'lucide-react';
 
+// --- TYPE DEFINITIONS ---
+interface SpotlightCardProps {
+  children: React.ReactNode;
+  className?: string;
+}
+
+interface SectionHeaderProps {
+  title: string;
+  subtitle: string;
+  align?: "center" | "left";
+}
+
+interface BrandLogoProps {
+  onClick: () => void;
+}
+
+interface FooterProps {
+  navigateTo: (tab: string) => void;
+  openContactModal: () => void;
+}
+
+interface HomeSectionProps {
+  navigateTo: (tab: string) => void;
+  openContactModal: () => void;
+}
+
+interface ServicesSectionProps {
+  openContactModal: () => void;
+}
+
+interface FormData {
+  brand: string;
+  modelYear: string;
+  serviceType: string;
+  name: string;
+  phone: string;
+  date: string;
+}
+
 // --- AYARLAR ---
 const CUSTOM_LOGO_URL = "BeyazHeaderLogo.png"; 
 
@@ -54,12 +93,12 @@ const styles = `
 // --- UI COMPONENTS ---
 
 // Spotlight Card: Mouse takipli ışık efekti olan kart
-const SpotlightCard = ({ children, className = "" }) => {
-  const divRef = useRef(null);
+const SpotlightCard = ({ children, className = "" }: SpotlightCardProps) => {
+  const divRef = useRef<HTMLDivElement>(null);
   const [position, setPosition] = useState({ x: 0, y: 0 });
   const [opacity, setOpacity] = useState(0);
 
-  const handleMouseMove = (e) => {
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
     if (!divRef.current) return;
     const rect = divRef.current.getBoundingClientRect();
     setPosition({ x: e.clientX - rect.left, y: e.clientY - rect.top });
@@ -86,7 +125,7 @@ const SpotlightCard = ({ children, className = "" }) => {
 };
 
 // Section Header Component
-const SectionHeader = ({ title, subtitle, align = "center" }) => (
+const SectionHeader = ({ title, subtitle, align = "center" }: SectionHeaderProps) => (
   <div className={`mb-6 sm:mb-8 md:mb-12 lg:mb-16 xl:mb-20 ${align === "center" ? "text-center" : "text-left"}`}>
     <div className={`inline-flex items-center gap-1.5 sm:gap-2 px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-full bg-orange-500/10 border border-orange-500/20 text-orange-400 text-[10px] sm:text-xs md:text-sm font-bold uppercase tracking-wider sm:tracking-widest mb-3 sm:mb-4 md:mb-5 ${align === "center" ? "mx-auto" : ""}`}>
       <span className="w-1 h-1 sm:w-1.5 sm:h-1.5 rounded-full bg-orange-500 animate-pulse"></span>
@@ -99,7 +138,7 @@ const SectionHeader = ({ title, subtitle, align = "center" }) => (
 );
 
 // --- HEADER & FOOTER LOGO BİLEŞENİ ---
-const BrandLogo = ({ onClick }) => (
+const BrandLogo = ({ onClick }: BrandLogoProps) => (
   <div className="flex items-center gap-2 sm:gap-3 cursor-pointer group select-none relative min-h-[44px] min-w-[44px]" onClick={onClick}>
     <div className="absolute left-0 top-1/2 -translate-y-1/2 w-12 h-12 sm:w-16 sm:h-16 bg-orange-500/20 blur-2xl rounded-full pointer-events-none transition-opacity group-hover:opacity-100 opacity-50"></div>
     <div className="relative h-10 w-10 sm:h-12 sm:w-12 md:h-14 md:w-14 flex-shrink-0 transition-transform duration-300 group-hover:scale-110">
@@ -115,7 +154,7 @@ const BrandLogo = ({ onClick }) => (
 );
 
 // --- FOOTER ---
-const Footer = ({ navigateTo, openContactModal }) => (
+const Footer = ({ navigateTo, openContactModal }: FooterProps) => (
   <footer className="bg-[#020617] border-t border-slate-800 w-full snap-start relative overflow-hidden">
     <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-[0.03]"></div>
     <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-10 md:py-12 lg:py-16 relative z-10">
@@ -156,9 +195,9 @@ const Footer = ({ navigateTo, openContactModal }) => (
 );
 
 // --- HOME SECTION (Main Page) ---
-function HomeSection({ navigateTo, openContactModal }) {
-  const scrollRef = useRef(null);
-  const featuresRef = useRef(null); // Ref for auto-scrolling features
+function HomeSection({ navigateTo, openContactModal }: HomeSectionProps) {
+  const scrollRef = useRef<HTMLDivElement>(null);
+  const featuresRef = useRef<HTMLDivElement>(null); // Ref for auto-scrolling features
   const [activeSection, setActiveSection] = useState(0);
   const [activeFeature, setActiveFeature] = useState(0); // State to track active card
   const sectionIds = ['hero', 'features', 'testimonials', 'cta', 'footer'];
@@ -188,7 +227,8 @@ function HomeSection({ navigateTo, openContactModal }) {
     let minDiff = Number.MAX_VALUE;
 
     Array.from(container.children).forEach((child, index) => {
-        const childCenter = child.offsetLeft + (child.clientWidth / 2);
+        const element = child as HTMLElement;
+        const childCenter = element.offsetLeft + (element.clientWidth / 2);
         const diff = Math.abs(scrollCenter - childCenter);
         if (diff < minDiff) {
             minDiff = diff;
@@ -206,7 +246,7 @@ function HomeSection({ navigateTo, openContactModal }) {
     const slider = featuresRef.current;
     if (!slider) return;
 
-    let interval;
+    let interval: NodeJS.Timeout | undefined;
     const startAutoScroll = () => {
       interval = setInterval(() => {
         // Check if we are at the end
@@ -232,14 +272,16 @@ function HomeSection({ navigateTo, openContactModal }) {
     }
 
     // Stop on user interaction
-    const stopScroll = () => clearInterval(interval);
+    const stopScroll = () => {
+      if (interval) clearInterval(interval);
+    };
     
     // Add listeners
     slider.addEventListener('touchstart', stopScroll, { passive: true });
     slider.addEventListener('touchend', startAutoScroll, { passive: true });
     
     return () => {
-      clearInterval(interval);
+      if (interval) clearInterval(interval);
       if (slider) {
         slider.removeEventListener('touchstart', stopScroll);
         slider.removeEventListener('touchend', startAutoScroll);
@@ -247,7 +289,7 @@ function HomeSection({ navigateTo, openContactModal }) {
     };
   }, []);
 
-  const scrollToSection = (index) => {
+  const scrollToSection = (index: number) => {
     if (!scrollRef.current) return;
     const height = scrollRef.current.offsetHeight || window.innerHeight;
     scrollRef.current.scrollTo({ top: index * height, behavior: 'smooth' });
@@ -463,7 +505,7 @@ function HomeSection({ navigateTo, openContactModal }) {
   );
 }
 
-function ServicesSection({ openContactModal }) {
+function ServicesSection({ openContactModal }: ServicesSectionProps) {
   const services = [
     { title: "MOTOR MEKANİK", icon: <Car/>, desc: "Komple motor revizyonu, triger, şanzıman ve ağır bakım.", img: "motorVeMekanik.png" },
     { title: "PERİYODİK BAKIM", icon: <Clock/>, desc: "Yağ değişimi, filtreler, sıvı kontrolleri ve genel check-up.", img: "periyodikBAkım.png" },
@@ -565,7 +607,7 @@ function ContactSection() {
                 ))}
              </div>
              <div className="h-[300px] sm:h-[400px] md:h-[500px] lg:h-[600px] xl:h-[700px] bg-slate-900 rounded-xl sm:rounded-2xl overflow-hidden border border-slate-800 shadow-2xl relative">
-                <iframe src="https://maps.google.com/maps?q=Turun%C3%A7%20Oto%20Tamir%20Defne%20Hatay&t=&z=15&ie=UTF8&iwloc=&output=embed" width="100%" height="100%" style={{border:0}} allowFullScreen="" loading="lazy"></iframe>
+                <iframe src="https://maps.google.com/maps?q=Turun%C3%A7%20Oto%20Tamir%20Defne%20Hatay&t=&z=15&ie=UTF8&iwloc=&output=embed" width="100%" height="100%" style={{border:0}} allowFullScreen={true} loading="lazy"></iframe>
                 <div className="absolute inset-0 pointer-events-none border-4 sm:border-[6px] md:border-[8px] border-slate-800 rounded-xl sm:rounded-2xl"></div>
              </div>
           </div>
@@ -576,9 +618,9 @@ function ContactSection() {
 
 function AppointmentSection() {
   const [step, setStep] = useState(1);
-  const [formData, setFormData] = useState({ brand: 'Seçiniz', modelYear: '', serviceType: '', name: '', phone: '', date: '' });
-  const handleChange = (e) => setFormData({ ...formData, [e.target.name]: e.target.value });
-  const handleServiceSelect = (service) => setFormData({ ...formData, serviceType: service });
+  const [formData, setFormData] = useState<FormData>({ brand: 'Seçiniz', modelYear: '', serviceType: '', name: '', phone: '', date: '' });
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => setFormData({ ...formData, [e.target.name]: e.target.value });
+  const handleServiceSelect = (service: string) => setFormData({ ...formData, serviceType: service });
   const submitAppointment = () => {
     const message = `*Yeni Randevu!* 📅%0A%0A*Araç:* ${formData.brand} (${formData.modelYear})%0A*Hizmet:* ${formData.serviceType}%0A*Kişi:* ${formData.name}%0A*Tel:* ${formData.phone}%0A*Tarih:* ${formData.date}`;
     window.open(`https://wa.me/905392470143?text=${message}`, '_blank');
@@ -652,7 +694,7 @@ export default function App() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const navigateTo = (tab) => {
+  const navigateTo = (tab: string) => {
     setActiveTab(tab);
     setIsMenuOpen(false);
     if(tab !== 'home') window.scrollTo({ top: 0, behavior: 'smooth' });
