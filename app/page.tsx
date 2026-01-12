@@ -51,6 +51,7 @@ interface ServicesSectionProps {
 
 interface FormData {
   brand: string;
+  model: string;
   modelYear: string;
   serviceType: string;
   name: string;
@@ -618,11 +619,11 @@ function ContactSection() {
 
 function AppointmentSection() {
   const [step, setStep] = useState(1);
-  const [formData, setFormData] = useState<FormData>({ brand: 'Seçiniz', modelYear: '', serviceType: '', name: '', phone: '', date: '' });
+  const [formData, setFormData] = useState<FormData>({ brand: 'Seçiniz', model: '', modelYear: '', serviceType: '', name: '', phone: '', date: '' });
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => setFormData({ ...formData, [e.target.name]: e.target.value });
   const handleServiceSelect = (service: string) => setFormData({ ...formData, serviceType: service });
   const submitAppointment = () => {
-    const message = `*Yeni Randevu!* 📅%0A%0A*Araç:* ${formData.brand} (${formData.modelYear})%0A*Hizmet:* ${formData.serviceType}%0A*Kişi:* ${formData.name}%0A*Tel:* ${formData.phone}%0A*Tarih:* ${formData.date}`;
+    const message = `*Yeni Randevu!* 📅%0A%0A*Araç:* ${formData.brand} ${formData.model ? formData.model + ' ' : ''}(${formData.modelYear})%0A*Hizmet:* ${formData.serviceType}%0A*Kişi:* ${formData.name}%0A*Tel:* ${formData.phone}%0A*Tarih:* ${formData.date}`;
     window.open(`https://wa.me/905392470143?text=${message}`, '_blank');
   };
   
@@ -630,15 +631,41 @@ function AppointmentSection() {
     <section className="pt-6 sm:pt-8 md:pt-10 lg:pt-12 pb-12 sm:pb-16 md:pb-20 lg:pb-24 xl:pb-28 min-h-screen flex items-center bg-[#020617] relative">
       <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-[0.05]"></div>
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-2xl relative z-10">
-        <SpotlightCard className="p-6 sm:p-8 md:p-10 lg:p-12">
-          <div className="absolute top-0 left-0 w-full h-1 bg-slate-800"><div className="h-full bg-orange-500 transition-all duration-500" style={{ width: `${(step/2)*100}%` }}></div></div>
-          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black text-white mb-6 sm:mb-8 md:mb-10 text-center uppercase tracking-tight">ONLİNE RANDEVU</h2>
+        <SpotlightCard className="p-6 sm:p-8 md:p-10 lg:p-12 relative overflow-hidden">
+          <div className="absolute top-0 left-0 right-0 h-1 bg-slate-800 z-0"><div className="h-full bg-orange-500 transition-all duration-500" style={{ width: `${(step/2)*100}%` }}></div></div>
+          <div className="relative z-10">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black text-white mb-6 sm:mb-8 md:mb-10 text-center uppercase tracking-tight pt-4 sm:pt-5 md:pt-6">ONLİNE RANDEVU</h2>
           
           {step === 1 && (
             <div className="space-y-5 sm:space-y-6 md:space-y-8 animate-in slide-in-from-right-8 fade-in">
                <div className="space-y-2 sm:space-y-3">
                  <label className="text-xs sm:text-sm font-bold text-slate-400 uppercase tracking-wider ml-1">Marka</label>
-                 <select name="brand" value={formData.brand} onChange={handleChange} className="w-full bg-slate-950 border border-slate-700 rounded-xl px-4 sm:px-5 py-3.5 sm:py-4 md:py-5 text-sm sm:text-base md:text-lg text-white focus:border-orange-500 outline-none transition-colors font-bold appearance-none min-h-[44px]"><option>Seçiniz</option><option>BMW</option><option>Mercedes</option><option>Audi</option><option>Volkswagen</option><option>Diğer</option></select>
+                 <select name="brand" value={formData.brand} onChange={handleChange} className="w-full bg-slate-950 border border-slate-700 rounded-xl px-4 sm:px-5 py-3.5 sm:py-4 md:py-5 text-sm sm:text-base md:text-lg text-white focus:border-orange-500 outline-none transition-colors font-bold appearance-none min-h-[44px]">
+                   <option>Seçiniz</option>
+                   <option>Audi</option>
+                   <option>BMW</option>
+                   <option>Citroen</option>
+                   <option>Dacia</option>
+                   <option>Fiat</option>
+                   <option>Ford</option>
+                   <option>Honda</option>
+                   <option>Hyundai</option>
+                   <option>Kia</option>
+                   <option>Mercedes</option>
+                   <option>Nissan</option>
+                   <option>Opel</option>
+                   <option>Peugeot</option>
+                   <option>Renault</option>
+                   <option>Seat</option>
+                   <option>Skoda</option>
+                   <option>Toyota</option>
+                   <option>Volkswagen</option>
+                   <option>Diğer</option>
+                 </select>
+               </div>
+               <div className="space-y-2 sm:space-y-3">
+                 <label className="text-xs sm:text-sm font-bold text-slate-400 uppercase tracking-wider ml-1">Araç Modeli</label>
+                 <input type="text" name="model" value={formData.model} onChange={handleChange} placeholder="Örn: Focus, Civic, Passat" className="w-full bg-slate-950 border border-slate-700 rounded-xl px-4 sm:px-5 py-3.5 sm:py-4 md:py-5 text-sm sm:text-base md:text-lg text-white focus:border-orange-500 outline-none transition-colors font-bold min-h-[44px]" />
                </div>
                <div className="space-y-2 sm:space-y-3">
                  <label className="text-xs sm:text-sm font-bold text-slate-400 uppercase tracking-wider ml-1">Model Yılı</label>
@@ -676,6 +703,7 @@ function AppointmentSection() {
                </div>
              </div>
           )}
+          </div>
         </SpotlightCard>
       </div>
     </section>
