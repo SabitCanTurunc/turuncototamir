@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState, useEffect, useRef, useCallback } from 'react';
+import Link from 'next/link';
 import Image from 'next/image';
 import { Wrench, Settings, Clock, ShieldCheck, ArrowRight, Quote } from 'lucide-react';
 import { SpotlightCard } from '../components/ui/SpotlightCard';
@@ -197,16 +198,16 @@ export function HomeSection({ navigateTo, openContactModal, scrollToTopRef }: Ho
             </h1>
             
             <p className="text-xs sm:text-sm md:text-base lg:text-lg max-w-lg md:max-w-xl font-medium leading-relaxed px-4 sm:px-0">
-              Profesyonel ekip, dijital diyagnostik ve garantili işçilik ile aracınızın performansını zirveye taşıyoruz.
+              Defne'deki merkez servisimizde; Antakya, İskenderun, Samandağ ve tüm Hatay ilçelerinden gelen müşterilerimize garantili işçilik ve dijital diyagnostik ile hizmet veriyoruz.
             </p>
             
             <div className="flex flex-col sm:flex-row w-full sm:w-auto justify-center md:justify-start gap-2 sm:gap-3 pt-1 px-4 sm:px-0">
                <button onClick={openContactModal} className="bg-orange-600 hover:bg-orange-500 active:bg-orange-700 text-white px-5 sm:px-6 md:px-7 lg:px-8 py-2 sm:py-2.5 md:py-3 lg:py-3.5 rounded-xl sm:rounded-2xl font-bold text-xs sm:text-sm md:text-base transition-all hover:scale-105 active:scale-95 shadow-2xl shadow-orange-600/30 flex items-center justify-center gap-2 group w-full sm:w-auto min-h-[44px]">
                  Randevu Al <ArrowRight className="w-3 h-3 sm:w-4 sm:h-4 md:w-5 md:h-5 group-hover:translate-x-1 transition-transform" />
                </button>
-               <button onClick={() => navigateTo('services')} className="bg-slate-800/50 hover:bg-slate-800 active:bg-slate-700 text-white border border-slate-700 px-5 sm:px-6 md:px-7 lg:px-8 py-2 sm:py-2.5 md:py-3 lg:py-3.5 rounded-xl sm:rounded-2xl font-bold text-xs sm:text-sm md:text-base transition-all backdrop-blur-sm flex items-center justify-center gap-2 w-full sm:w-auto min-h-[44px]">
+               <Link href="/hizmetler" className="bg-slate-800/50 hover:bg-slate-800 active:bg-slate-700 text-white border border-slate-700 px-5 sm:px-6 md:px-7 lg:px-8 py-2 sm:py-2.5 md:py-3 lg:py-3.5 rounded-xl sm:rounded-2xl font-bold text-xs sm:text-sm md:text-base transition-all backdrop-blur-sm flex items-center justify-center gap-2 w-full sm:w-auto min-h-[44px]">
                  <Wrench className="w-3 h-3 sm:w-4 sm:h-4 md:w-5 md:h-5 text-slate-400" /> <span className="hidden sm:inline">Hizmetleri Gör</span><span className="sm:hidden">Hizmetler</span>
-               </button>
+               </Link>
             </div>
             
             <div className="pt-2 sm:pt-3 md:pt-4 flex justify-center md:justify-start items-center gap-3 sm:gap-4 md:gap-6 border-t border-white/5 w-full px-4 sm:px-0">
@@ -322,7 +323,7 @@ export function HomeSection({ navigateTo, openContactModal, scrollToTopRef }: Ho
       </section>
 
       {/* SECTION 5: FOOTER */}
-      <Footer navigateTo={navigateTo} openContactModal={openContactModal} />
+      <Footer openContactModal={openContactModal} />
     </div>
   );
 }

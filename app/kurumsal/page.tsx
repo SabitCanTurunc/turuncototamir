@@ -1,0 +1,33 @@
+'use client';
+
+import { useState } from 'react';
+import { Header } from '../components/layout/Header';
+import { Footer } from '../components/layout/Footer';
+import { ContactModal } from '../components/modals/ContactModal';
+import CorporateSection from '../sections/CorporateSection';
+
+export default function CorporatePage() {
+  const [isContactModalOpen, setIsContactModalOpen] = useState(false);
+  
+  const openContactModal = () => setIsContactModalOpen(true);
+  const closeContactModal = () => setIsContactModalOpen(false);
+
+  return (
+    <div className="min-h-screen bg-[#020617] text-slate-100 font-sans selection:bg-orange-500 selection:text-white overflow-x-hidden">
+      <ContactModal 
+        isOpen={isContactModalOpen} 
+        onClose={closeContactModal}
+        navigateTo={() => {}}
+      />
+
+      <Header 
+        openContactModal={openContactModal}
+      />
+
+      <main className="pt-[72px] sm:pt-[80px] md:pt-[88px] lg:pt-[96px]">
+        <CorporateSection />
+        <Footer openContactModal={openContactModal} />
+      </main>
+    </div>
+  );
+}
