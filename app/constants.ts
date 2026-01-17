@@ -90,15 +90,7 @@ export const DETAILED_SERVICES = [
   { slug: 'fren', title: 'Fren Sistemi', desc: 'Sürüş güvenliğiniz için hayati önem taşıyan balata, disk ve hidrolik sistemlerinin detaylı kontrolü ve değişimi.' },
   { slug: 'sanziman-tamiri', title: 'Şanzıman ve Debriyaj (Baskı Balata)', desc: 'Vites geçişlerinin pürüzsüz olmasını sağlayan baskı balata değişimi, şanzıman yağı ve dişli sistemi onarımları.' },
   { slug: 'alt-takim-suspansiyon', title: 'Alt Takım ve Süspansiyon', desc: 'Aracınızın yol tutuşunu ve sürüş konforunu sağlayan parçaların bakımı ve değişimi.' },
-  { slug: 'yag-degisimi', title: 'Yağ Değişimi', desc: 'Motorunuzun performansını koruyan kaliteli yağ ve filtre değişimi.' },
-  { slug: 'triger-kayisi-degisimi', title: 'Triger Kayışı Değişimi', desc: 'Motor sağlığı için zamanında ve garantili triger seti değişimi.' },
-  { slug: 'baski-balata-degisimi', title: 'Baskı Balata Değişimi', desc: 'Vites geçişlerini rahatlatan debriyaj seti ve baskı balata yenileme.' },
   { slug: 'elektronik', title: 'Elektronik ve Yazılım', desc: 'Akü, şarj dinamosu ve tüm elektronik aksam arıza tespiti ve onarımı.' },
-  { slug: 'klima-gaz-dolumu', title: 'Klima Gazı Dolumu', desc: 'Yaz kış konforlu sürüş için oto klima tamiri ve gaz dolumu.' },
-  { slug: 'egzoz-partikul-temizligi', title: 'Egzoz ve Partikül Temizliği', desc: 'DPF iptali, partikül temizliği ve egzoz sistemi bakımı.' },
-  { slug: 'aku-degisimi', title: 'Akü Değişimi', desc: 'Yolda kalmamanız için yerinde akü ölçümü ve değişimi.' },
-  { slug: 'direksiyon-kutusu-tamiri', title: 'Direksiyon Kutusu Tamiri', desc: 'Direksiyon boşluğu ve ses sorunları için garantili revizyon.' },
-  { slug: 'enjektor-temizligi', title: 'Enjektör Temizliği', desc: 'Yakıt tasarrufu ve performans artışı için profesyonel enjektör bakımı.' },
 ] as const;
 
 // Car brands
