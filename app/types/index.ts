@@ -12,11 +12,10 @@ export interface SectionHeaderProps {
 }
 
 export interface BrandLogoProps {
-  onClick: () => void;
+  onClick?: () => void;
 }
 
 export interface FooterProps {
-  navigateTo: (tab: string) => void;
   openContactModal: () => void;
 }
 

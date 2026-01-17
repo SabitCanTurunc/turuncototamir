@@ -6,13 +6,7 @@ import { MapPin, Phone } from 'lucide-react';
 import type { FooterProps } from '@/app/types';
 import Link from 'next/link';
 
-// FooterProps artık navigateTo beklemiyor olabilir, ama şimdilik optional yapalım veya kaldıralım
-// type dosyasını da güncellemek gerekebilir ama şimdilik any veya interface override yapalım
-interface NewFooterProps {
-    openContactModal: () => void;
-}
-
-export const Footer = ({ openContactModal }: NewFooterProps) => (
+export const Footer = ({ openContactModal }: FooterProps) => (
   <footer className="bg-[#020617] border-t border-slate-800 w-full snap-start relative overflow-hidden">
     <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-[0.03]"></div>
     <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-10 md:py-12 lg:py-16 relative z-10">

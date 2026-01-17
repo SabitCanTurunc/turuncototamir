@@ -5,7 +5,7 @@ import { IMAGE_PATHS, APP_CONFIG } from '../../constants';
 import type { BrandLogoProps } from '../../types';
 
 export const BrandLogo = ({ onClick }: BrandLogoProps) => (
-  <div className="flex items-center gap-2 sm:gap-3 cursor-pointer group select-none relative min-h-[44px] min-w-[44px]" onClick={onClick} role="button" tabIndex={0} onKeyDown={(e) => e.key === 'Enter' && onClick()} aria-label="Ana sayfaya dön">
+  <div className="flex items-center gap-2 sm:gap-3 cursor-pointer group select-none relative min-h-[44px] min-w-[44px]" onClick={onClick} role="button" tabIndex={0} onKeyDown={(e) => e.key === 'Enter' && onClick && onClick()} aria-label="Ana sayfaya dön">
     <div className="absolute left-0 top-1/2 -translate-y-1/2 w-12 h-12 sm:w-16 sm:h-16 bg-orange-500/20 blur-2xl rounded-full pointer-events-none transition-opacity group-hover:opacity-100 opacity-50"></div>
     <div className="relative h-10 w-10 sm:h-12 sm:w-12 md:h-14 md:w-14 flex-shrink-0 transition-transform duration-300 group-hover:scale-110">
       <Image src={IMAGE_PATHS.logo} alt="Turunç Oto Logo" width={56} height={56} className="h-full w-full object-contain drop-shadow-xl" priority />
