@@ -49,13 +49,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const service = DETAILED_SERVICES.find(s => s.slug === resolvedParams.hizmet);
 
   if (!district || !service) return { title: 'Hizmet Bulunamadı' };
-
-  const title = `${district} ${service.title} - Turunç Oto Tamir Hatay`;
-  const description = `Hatay ${district} bölgesinde garantili ${service.title} hizmeti. ${service.desc} Randevu: ${APP_CONFIG.phone}`;
-
   return {
-    title,
-    description,
+    title: `${service.title} - ${district}, Hatay`,
+    description: `Hatay ${district} bölgesinde ${service.title} hizmeti. Motor, mekanik, periyodik bakım ve onarım işlemleri. Garantili işçilik.`,
     alternates: { canonical: `/hizmetler/${resolvedParams.ilce}/${resolvedParams.hizmet}` },
   };
 }

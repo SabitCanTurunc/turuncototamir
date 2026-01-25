@@ -42,8 +42,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
     if (!district || !service) return { title: 'Hizmet Bulunamadı' };
 
-    const title = `${district} ${service.title} - Turunç Oto Tamir`;
-    const description = `${district} bölgesinde ${service.title} hizmeti. ${service.shortDescription}`;
+    const title = `${service.title} - ${district}, Hatay`;
+    const description = `Hatay ${district} bölgesinde ${service.title} hizmeti. ${service.shortDescription}`;
 
     return {
         title,

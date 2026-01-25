@@ -36,8 +36,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     if (!district || !service) return { title: 'Hizmet Bulunamadı' };
 
     return {
-        title: `${district} ${service.title} - Turunç Oto Tamir`,
-        description: `${district} bölgesinde ${service.title} hizmeti. ${service.shortDescription} Belirtileri: ${service.symptoms.slice(0, 2).join(', ')}.`,
+        title: `${service.title} - ${district}, Hatay`,
+        description: `Hatay ${district} bölgesinde ${service.title} hizmeti. ${service.shortDescription} Belirtileri: ${service.symptoms.slice(0, 2).join(', ')}.`,
         alternates: { canonical: `/hizmetler/${resolvedParams.ilce}/motor-mekanik/${resolvedParams.slug}` },
     };
 }

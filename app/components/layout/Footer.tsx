@@ -14,7 +14,7 @@ export const Footer = ({ openContactModal }: FooterProps) => (
         <div className="lg:col-span-5 flex flex-col items-center md:items-start">
           <div className="mb-4 sm:mb-6">
             <Link href="/">
-                <BrandLogo />
+              <BrandLogo />
             </Link>
           </div>
           <p className="text-slate-400 text-xs sm:text-sm md:text-base leading-relaxed max-w-sm md:max-w-md">
@@ -27,7 +27,7 @@ export const Footer = ({ openContactModal }: FooterProps) => (
             {NAV_ITEMS.map(item => (
               <li key={item.key}>
                 <Link href={item.href} className="hover:text-orange-500 cursor-pointer transition-colors min-h-[44px] flex items-center">
-                    {item.label}
+                  {item.label}
                 </Link>
               </li>
             ))}
@@ -50,7 +50,7 @@ export const Footer = ({ openContactModal }: FooterProps) => (
       </div>
       <div className="border-t border-slate-900 mt-6 sm:mt-8 md:mt-10 lg:mt-12 pt-4 sm:pt-6 md:pt-8 text-center">
         <p className="text-slate-600 text-[10px] sm:text-xs md:text-sm font-medium tracking-wide">
-          &copy; <time dateTime={new Date().getFullYear().toString()}>{new Date().getFullYear()}</time> {APP_CONFIG.companyFullName}. Powered by Next Gen Web.
+          &copy; <time dateTime={new Date().getFullYear().toString()}>{new Date().getFullYear()}</time> {APP_CONFIG.companyFullName}. Designed & Developed by <a href="https://portfolio-sabit-canturunc.vercel.app/" target="_blank" rel="noopener noreferrer" className="hover:text-orange-500 transition-colors">Sabit Can Turunç</a>.
         </p>
       </div>
     </div>
