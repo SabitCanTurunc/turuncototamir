@@ -37,10 +37,10 @@ export const Footer = ({ openContactModal }: FooterProps) => (
         <div className="lg:col-span-3 flex flex-col items-center md:items-start">
           <h4 className="text-white font-bold mb-4 sm:mb-6 text-sm md:text-base">İletişim</h4>
           <div className="space-y-3 sm:space-y-4 text-slate-400 text-xs sm:text-sm md:text-base w-full max-w-sm md:max-w-md">
-            <div className="flex items-start gap-3 sm:gap-4 p-3 sm:p-4 rounded-xl hover:bg-white/5 transition-colors min-h-[44px]">
-              <MapPin className="w-5 h-5 sm:w-6 sm:h-6 text-orange-500 shrink-0 mt-0.5" />
-              <span className="leading-relaxed">{APP_CONFIG.address}</span>
-            </div>
+            <a href={EXTERNAL_URLS.googleMapsDirect} target="_blank" rel="noopener noreferrer" className="flex items-start gap-3 sm:gap-4 p-3 sm:p-4 rounded-xl hover:bg-white/5 transition-colors min-h-[44px] cursor-pointer group">
+              <MapPin className="w-5 h-5 sm:w-6 sm:h-6 text-orange-500 shrink-0 mt-0.5 group-hover:animate-bounce" />
+              <span className="leading-relaxed group-hover:text-orange-500 transition-colors">{APP_CONFIG.address}</span>
+            </a>
             <div className="flex items-center gap-3 sm:gap-4 p-3 sm:p-4 rounded-xl hover:bg-white/5 transition-colors group cursor-pointer min-h-[44px]" onClick={() => window.open(EXTERNAL_URLS.phone)} role="button" tabIndex={0} onKeyDown={(e) => e.key === 'Enter' && window.open(EXTERNAL_URLS.phone)} aria-label={`Telefon: ${APP_CONFIG.phone}`}>
               <Phone className="w-5 h-5 sm:w-6 sm:h-6 text-orange-500 shrink-0 group-hover:animate-bounce" />
               <span className="font-bold text-white group-hover:text-orange-500 transition-colors text-sm sm:text-base md:text-lg">{APP_CONFIG.phone}</span>

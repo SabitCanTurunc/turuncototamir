@@ -52,6 +52,7 @@ export const EXTERNAL_URLS = {
   whatsapp: `https://wa.me/${APP_CONFIG.whatsapp}`,
   phone: `tel:${APP_CONFIG.phoneRaw}`,
   googleMaps: 'https://maps.google.com/maps?q=Turun%C3%A7%20Oto%20Tamir%20Defne%20Hatay&t=&z=15&ie=UTF8&iwloc=&output=embed',
+  googleMapsDirect: 'https://maps.google.com/maps?q=Turun%C3%A7%20Oto%20Tamir%20Defne%20Hatay',
   noiseTexture: 'https://grainy-gradients.vercel.app/noise.svg',
   workshopImage: 'https://images.unsplash.com/photo-1619642751034-765dfdf7c58e?auto=format&fit=crop&q=80&w=1000',
 } as const;
