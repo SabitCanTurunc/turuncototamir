@@ -191,11 +191,13 @@ export function HomeSection({ navigateTo, openContactModal, scrollToTopRef }: Ho
           
           <div className="flex flex-col items-center md:items-start text-center md:text-left space-y-4 sm:space-y-5 md:space-y-6 lg:space-y-8 order-2 md:order-1">
             
-            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl 2xl:text-9xl font-black text-white tracking-tighter leading-[0.92] md:leading-[0.88] lg:leading-[0.85] drop-shadow-2xl px-2 sm:px-0">
+            <h1 className="sr-only">Hatay Defne Oto Tamircisi ve Bakım Servisi</h1>
+            
+            <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl 2xl:text-9xl font-black text-white tracking-tighter leading-[0.92] md:leading-[0.88] lg:leading-[0.85] drop-shadow-2xl px-2 sm:px-0">
               PERFORMANSA <br/>
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 via-orange-500 to-red-500">YENİDEN</span> <br/>
               MERHABA
-            </h1>
+            </h2>
             
             <p className="text-xs sm:text-sm md:text-base lg:text-lg max-w-lg md:max-w-xl font-medium leading-relaxed px-4 sm:px-0">
               Defne'deki merkez servisimizde; Antakya, İskenderun, Samandağ ve tüm Hatay ilçelerinden gelen müşterilerimize garantili işçilik ve dijital diyagnostik ile hizmet veriyoruz.

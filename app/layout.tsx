@@ -23,22 +23,23 @@ const siteUrl = SITE_CONFIG.url;
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: "Turunç Oto Tamir | Hatay'da Profesyonel Otomotiv Bakım",
+    default: "Turunç Oto Tamir | Hatay Defne Oto Tamircisi ve Bakım Servisi",
     template: "%s | Turunç Oto Tamir"
   },
-  description: "Hatay'ın 1 numaralı oto tamir servisi. 15+ yıl tecrübe, dijital diyagnostik, garantili işçilik. Hemen randevu alın: 0539 247 01 43",
+  description: "Hatay Defne bölgesinin 1 numaralı oto tamircisi. Antakya ve Samandağ'a da hizmet veren servisimizde 15+ yıl tecrübe, motor mekanik ve garantili işçilik. Hemen arayın.",
   keywords: [
-    "oto tamir",
-    "araba bakım",
+    "defne oto tamirci",
+    "defne oto tamir",
+    "hatay defne sanayi",
+    "antakya oto tamir",
+    "samandağ oto tamir",
     "Hatay oto tamir",
-    "Defne oto tamir",
+    "araba bakım",
     "motor bakım",
     "periyodik bakım",
     "fren bakımı",
     "elektronik arıza tespiti",
-    "otomotiv servis",
-    "araç bakım",
-    "oto servis Hatay"
+    "otomotiv servis"
   ],
   authors: [{ name: "Turunç Oto Tamir" }],
   creator: "Turunç Oto Tamir",

@@ -42,10 +42,24 @@ export function LocalBusinessSchema() {
         "closes": "18:30"
       }
     ],
-    "areaServed": {
-      "@type": "City",
-      "name": "Hatay"
-    },
+    "areaServed": [
+      {
+        "@type": "City",
+        "name": "Defne"
+      },
+      {
+        "@type": "City",
+        "name": "Antakya"
+      },
+      {
+        "@type": "City",
+        "name": "Samandağ"
+      },
+      {
+        "@type": "City",
+        "name": "Hatay"
+      }
+    ],
     "serviceType": [
       "Motor Mekanik",
       "Periyodik Bakım",
