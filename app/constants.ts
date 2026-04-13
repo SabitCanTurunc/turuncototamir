@@ -69,19 +69,7 @@ export const SERVICE_TYPES = [
 export const HATAY_DISTRICTS = [
   'Antakya',
   'Defne',
-  'Iskenderun',
-  'Samandag',
-  'Kirikhan',
-  'Reyhanli',
-  'Arsuz',
-  'Altinozu',
-  'Hassa',
-  'Erzin',
-  'Payas',
-  'Belen',
-  'Yayladagi',
-  'Dortyol',
-  'Kumlu',
+  'Samandağ',
 ] as const;
 
 // SEO Constants - Detailed Services for Slugs
